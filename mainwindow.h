@@ -1,4 +1,4 @@
-#ifndef MAINWINDOW_H
+﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
@@ -8,6 +8,8 @@
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 #include "QSqlTableModel"
+#include "QMessageBox"
+#include "QInputDialog"
 
 namespace Ui {
 class MainWindow;
@@ -26,7 +28,9 @@ private slots:
 
     void on_HistoryOrderButton_clicked();
 
-    void on_NowOrderButton_clicked();
+    void on_takeOrderButton_clicked();
+
+    void on_cancelOrderButton_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -34,6 +38,7 @@ private:
     QSqlTableModel *AllOrderSqlTableModel;
     QSqlTableModel *UserOrderSqlTableModel;
     QString UserID;
+    QSqlQuery userQuery;
 
 };
 

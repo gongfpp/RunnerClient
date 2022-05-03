@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>598</width>
-    <height>455</height>
+    <width>730</width>
+    <height>577</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>开跑！</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>C:/Users/MassGo/Pictures/icon.png</normaloff>C:/Users/MassGo/Pictures/icon.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -23,9 +27,15 @@
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QWidget" name="widget" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="maximumSize">
           <size>
-           <width>100</width>
+           <width>150</width>
            <height>16777215</height>
           </size>
          </property>
@@ -59,6 +69,33 @@
              <string>查询我的接单</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="takeOrderButton">
+            <property name="text">
+             <string>开跑！</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="cancelOrderButton">
+            <property name="text">
+             <string>退单</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item>
            <widget class="QPushButton" name="AllOrderButton">
@@ -95,8 +132,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>598</width>
-     <height>23</height>
+     <width>730</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
