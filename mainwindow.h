@@ -32,6 +32,10 @@ private slots:
 
     void on_cancelOrderButton_clicked();
 
+    void on_CreateOrderButton_clicked();
+
+    void on_DeleteOrderButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QSqlDatabase data_base;

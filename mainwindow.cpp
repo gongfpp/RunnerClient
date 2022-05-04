@@ -21,14 +21,12 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         qDebug()<<"connect failed";
         qDebug() << data_base.lastError();//.databaseText()  输出错误信息
-        ui->statusBar->showMessage("数据库链接失败");
+        ui->statusBar->showMessage("数据库链接失败 "+data_base.hostName());
     }
     else{
         qDebug()<<"success";
-        ui->statusBar->showMessage("数据库链接成功");
+        ui->statusBar->showMessage("数据库链接成功 "+data_base.hostName());
     }
-
-
 
 
 
@@ -37,12 +35,13 @@ MainWindow::MainWindow(QWidget *parent) :
     userQuery = QSqlQuery(data_base);
     data_base.transaction();
 
-
+    int a;
 //    UserID = ui->UserIdLineEdit->text();
     UserID = "666";
     ui->UserIdLineEdit->setText(UserID);
-
-
+//    ui->label->setText(QString("用户id：%1").arg(UserID));
+//    ui->UserIdLineEdit->hide();
+    ui->groupBox_3->hide();
 }
 
 MainWindow::~MainWindow()
@@ -66,19 +65,22 @@ void MainWindow::on_AllOrderButton_clicked()
 
 void MainWindow::on_HistoryOrderButton_clicked()
 {
-
+    UserID = ui->UserIdLineEdit->text();
     UserOrderSqlTableModel->setTable("Orders");
     UserOrderSqlTableModel->setFilter(QString("accepterId='%1'").arg(UserID));//查询用户名
     UserOrderSqlTableModel->select();
     ui->UserSqlTable->setModel(UserOrderSqlTableModel);
     qDebug() << UserOrderSqlTableModel->rowCount();
     if(UserOrderSqlTableModel->rowCount() == 0){
-        ui->statusBar->showMessage("您当前没有已接订单捏",4000);
+        ui->statusBar->showMessage("这哥们当前没有已接订单捏",3000);
+    }else{
+        ui->statusBar->showMessage(QString("%2的哥们订单数量:%1").arg(UserOrderSqlTableModel->rowCount()).arg(UserID));
     }
 }
 
 void MainWindow::on_takeOrderButton_clicked()
 {
+    UserID = ui->UserIdLineEdit->text();
     QString orderID;
     orderID = QInputDialog::getText(this,"选择订单号码","输入订单ID");
     if("" == orderID)   return ;
@@ -113,6 +115,7 @@ void MainWindow::on_takeOrderButton_clicked()
 
 void MainWindow::on_cancelOrderButton_clicked()
 {
+
     int orderID;
     orderID = QInputDialog::getInt(this,"选择订单号码","输入订单ID");
     qDebug() << orderID;
@@ -145,4 +148,16 @@ void MainWindow::on_cancelOrderButton_clicked()
 
     ui->statusBar->showMessage("退单成功！不用卷了！",4000);
     data_base.commit();
+}
+
+
+
+void MainWindow::on_CreateOrderButton_clicked()
+{
+
+}
+
+void MainWindow::on_DeleteOrderButton_clicked()
+{
+
 }
